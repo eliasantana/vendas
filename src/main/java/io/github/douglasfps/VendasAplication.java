@@ -2,6 +2,7 @@ package io.github.douglasfps;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,17 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
  * Adicionamos na notação @ConpomentScan os pacotes que queremos que o SpringBoot Scanei
  * */
 public class VendasAplication {
-    @Autowired
-    @Qualifier("applicationName")
+    @Value("${application.name}")
     private String aplicatioinName;
-
-    @Autowired
-    @Qualifier("version")
-    private String version;
 
     @GetMapping("/hello")
     public String helloWord(){
-        return aplicatioinName + " - " + version;
+        return aplicatioinName;
     }
 
 
